@@ -4,8 +4,8 @@ These are my dotfiles, with the rake install task adapted from [Ryan Bates](http
 
 ## Installation
 
-    git clone git://github.com/wsc/dotfiles ~/code/dotfiles
-    cd ~/code/dotfiles
+    git clone git://github.com/wsc/dotfiles ~/.dotfiles
+    cd ~/.dotfiles
     rake install
 
 ## Don't use these

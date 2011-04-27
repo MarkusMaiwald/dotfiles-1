@@ -1,0 +1,13 @@
+# Managed by Chef
+[core]
+  editor = vim -f
+[color]
+	diff = auto
+  interactive = always
+	branch = auto
+	status = auto
+[user]
+  name = Will St. Clair
+  email = will@willstclair.com
+[github]
+	user = wsc

@@ -10,4 +10,4 @@ These are my dotfiles, with the rake install task adapted from [Ryan Bates](http
 
 ## Don't use these
 
-These are designed for my Chef configuration so they will overwrite your existing ones without asking.
+These assume you're using oh-my-zsh and will also overwrite your existing files without asking.

@@ -1,4 +1,3 @@
-# Managed by Chef
 [core]
   editor = vim -f
 [color]

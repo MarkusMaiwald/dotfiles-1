@@ -1,3 +1,8 @@
+
+filetype off
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
+
 set expandtab
 set tabstop=2
 set shiftwidth=2
@@ -24,9 +29,7 @@ map ,; :s/^/;/<CR> <Esc>:nohlsearch <CR>
 map ,- :s/^/--/<CR> <Esc>:nohlsearch <CR>
 map ,c :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR> <Esc>:nohlsearch <CR>
 
-autocmd BufRead,BufNewFile Gemfile set filetype=Gemfile
 autocmd BufRead,BufNewFile /etc/nginx/* set ft=nginx
-autocmd BufRead,BufNewFile *.ru set filetype=Rackup
 
 " solarized
 syntax enable

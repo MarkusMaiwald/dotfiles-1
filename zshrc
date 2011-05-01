@@ -1,3 +1,4 @@
+source /usr/local/rvm/scripts/rvm
 export EDITOR=vim
 bindkey -e
 export ZSH=$HOME/.oh-my-zsh

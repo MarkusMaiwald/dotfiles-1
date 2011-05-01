@@ -7,7 +7,7 @@ desc "install dotfiles"
 
 task :install do
   Dir['*'].each do |file|
-    next if %w[Rakefile README.rdoc LICENSE].include? file
+    next if %w[Rakefile README.md LICENSE].include? file
     path = File.join(ENV['HOME'], ".#{file}")
     if File.exist?(path) || File.symlink?(path)
       puts "removing existing ~/.#{file}"

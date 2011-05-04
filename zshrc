@@ -1,3 +1,8 @@
+if [[ -f "${HOME}/.gpg-agent-info" ]]; then
+  . "${HOME}/.gpg-agent-info"
+  export GPG_AGENT_INFO
+fi
+
 source /usr/local/rvm/scripts/rvm
 export EDITOR=vim
 bindkey -e

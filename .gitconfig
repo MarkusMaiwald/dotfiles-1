@@ -1,5 +1,0 @@
-[filter "gpg"]
-    smudge = gpg -d -q --batch --no-tty
-      clean  = gpg -ea -q --batch --no-tty -r A4D118F7
-[diff "gpg"]
-    textconv = decrypt

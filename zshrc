@@ -1,6 +1,5 @@
 if [[ -f "${HOME}/.gpg-agent-info" ]]; then
-  . "${HOME}/.gpg-agent-info"
-  export GPG_AGENT_INFO
+  export $(cat "${HOME}/.gpg-agent-info")
 fi
 
 source /usr/local/rvm/scripts/rvm

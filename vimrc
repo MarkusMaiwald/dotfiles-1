@@ -1,4 +1,5 @@
 " General
+filetype on         " If you don't do this, vim will exit nonzero
 filetype off
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
@@ -37,8 +38,9 @@ set backupskip=/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*
 set directory=~/.vim/swap,~/tmp,.
 
 " Filetypes
-autocmd BufRead,BufNewFile /etc/nginx/* set ft=nginx
-autocmd BufRead,BufNewFile *.json set filetype=javascript foldmethod=syntax
+au BufRead,BufNewFile /etc/nginx/* set ft=nginx
+au BufRead,BufNewFile *.json set ft=javascript foldmethod=syntax
+au BufRead,BufNewFile *.zsh-theme,zshrc set ft=zsh
 
 " Colors
 syntax enable

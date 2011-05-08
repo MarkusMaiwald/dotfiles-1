@@ -19,11 +19,11 @@ export ZSH=$HOME/.oh-my-zsh
 
 case $(uname) in
   (Darwin) 
-    plugins=(git github gem osx brew)
+    plugins=(git github gem osx brew vagrant bundler rails3)
     export ZSH_THEME="wsc-mac"
     ;;
   (Linux)
-    plugins=(git github gem command-not-found)
+    plugins=(git github gem command-not-found bundler rails3)
     export ZSH_THEME="wsc-linux"
     ;;
 esac

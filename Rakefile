@@ -1,20 +1,28 @@
 # Adapted from Ryan Bates's dotfiles rakefile
 # https://github.com/ryanb/dotfiles
 
-require 'rake'
+require 'fileutils'
+
+IGNORES = %w{Rakefile README.md LICENSE}
+NO_DOTS = %w{bin}
+
+task :default => :install
 
 desc "install dotfiles"
-
 task :install do
   Dir['*'].each do |file|
-    next if %w[Rakefile README.md LICENSE].include? file
-    path = File.join(ENV['HOME'], ".#{file}")
+    next if IGNORES.include? file
+    path = install_path_for file
     if File.exist?(path) || File.symlink?(path)
-      puts "removing existing ~/.#{file}"
-      system %Q{rm -rf "$HOME/.#{file}"}
+      puts "Removing #{path}"
+      FileUtils.rm_rf path
     end
-    puts "linking ~/.#{file}"
-    system %Q{ln -s "$PWD/#{file}" "$HOME/.#{file}"}
+    puts "Linking #{path}"
+    FileUtils.ln_s File.join(Dir.pwd, file), path
   end
 end
 
+def install_path_for file
+  basename = (NO_DOTS.include? file) && file || ".#{file}"
+  File.join(ENV['HOME'], basename)
+end

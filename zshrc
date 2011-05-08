@@ -1,3 +1,5 @@
+export PATH=~/bin:$PATH
+
 # If GPG-Agent has started, load it
 if [[ -f "${HOME}/.gpg-agent-info" ]]; then
   export $(cat "${HOME}/.gpg-agent-info")

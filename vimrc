@@ -53,5 +53,9 @@ imap <C-a> <C-o>0
 imap <C-e> <C-o>$
 map <C-e> $
 map <C-a> 0
-
+" Tabs
+map <C-t><up> :tabr<cr>
+map <C-t><down> :tabl<cr>
+map <C-t><left> :tabp<cr>
+map <C-t><right> :tabn<cr>
 

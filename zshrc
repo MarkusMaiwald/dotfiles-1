@@ -1,5 +1,9 @@
 export PATH=~/bin:$PATH
 
+if [[ -f "${HOME}/.zprivate" ]]; then
+  source "${HOME}/.zprivate"
+fi
+
 # If GPG-Agent has started, load it
 if [[ -f "${HOME}/.gpg-agent-info" ]]; then
   export $(cat "${HOME}/.gpg-agent-info")

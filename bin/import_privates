@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+private_path="${HOME}/.dotfiles-private"
+
+if [[ -e ${private_path} ]]; then
+  backup_path="${HOME}/.dotfiles-private.backup-$(date +%s)"
+  print "backing up ${private_path} to ${backup_path}"
+  mv ${private_path} ${backup_path}
+fi
+ 
+vared -c -p 'Download URI? ' download_path
+if [[ -z ${download_path} ]]; then exit; fi
+
+temp_file=$(mktemp /tmp/import_privates.XXXXXX)
+curl -k ${download_path} > ${temp_file}
+
+pushd ${HOME}
+openssl enc -d -aes-256-cbc -in ${temp_file} | tar -xzv
+popd
+
+if [[ -e ${private_path} ]]; then
+  print "Private dotfiles installed."
+fi
+rm ${temp_file}
+

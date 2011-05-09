@@ -2,10 +2,12 @@
 
 pushd ${HOME}
 tmpfile=$(mktemp /tmp/export_privates.XXXXXX)
-filename="dotfiles-$(date +%s)"
-tar -czv .dotfiles-private | openssl enc -aes-256-cbc -salt -pass pass:${WSC_PRIVATE_DOTFILES_PASSWORD} > ${tmpfile}
+tar -cz .dotfiles-private | openssl enc -aes-256-cbc -salt -pass pass:${WSC_PRIVATE_DOTFILES_PASSWORD} > ${tmpfile}
+sha=$(openssl dgst -sha1 ${tmpfile})
+filename="dotfiles-${sha[-40,-1]}"
 popd
 s3cmd put --acl-public ${tmpfile} ${WSC_PRIVATE_DOTFILES_BUCKET}${filename}
 s3cmd del ${WSC_PRIVATE_DOTFILES_BUCKET}dotfiles
-s3cmd cp --acl-public ${WSC_PRIVATE_DOTFILES_BUCKET}${filename} ${WSC_PRIVATE_DOTFILES_BUCKET}dotfiles
+s3cmd cp --acl-public ${WSC_PRIVATE_DOTFILES_BUCKET}${filename} \
+  ${WSC_PRIVATE_DOTFILES_BUCKET}dotfiles
 rm ${tmpfile}

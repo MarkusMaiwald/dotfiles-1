@@ -15,11 +15,16 @@ temp_file=$(mktemp /tmp/import_privates.XXXXXX)
 curl -k ${download_path} > ${temp_file}
 
 pushd ${HOME}
-openssl enc -d -aes-256-cbc -in ${temp_file} | tar -xzv
-popd
+openssl enc -d -aes-256-cbc -in ${temp_file} | tar -xz
 
 if [[ -e ${private_path} ]]; then
   print "Private dotfiles installed."
 fi
+
+pushd ${private_path}
+rake install
+popd
+popd
+
 rm ${temp_file}
 

@@ -58,4 +58,5 @@ map <C-t><up> :tabr<cr>
 map <C-t><down> :tabl<cr>
 map <C-t><left> :tabp<cr>
 map <C-t><right> :tabn<cr>
-
+" Paste
+set pastetoggle=<F2>

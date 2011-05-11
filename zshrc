@@ -18,6 +18,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 case $(uname) in
   (Darwin)
+    export PATH=/usr/local/Cellar/ruby/1.9.2-p180/bin:/usr/local/bin:$PATH
     plugins=(git github gem osx brew vagrant bundler rails3)
     export ZSH_THEME="wsc-mac"
     ;;

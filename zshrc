@@ -9,13 +9,6 @@ if [[ -f "${HOME}/.gpg-agent-info" ]]; then
   export $(cat "${HOME}/.gpg-agent-info")
 fi
 
-# Load either systemwide or local RVM
-if [[ -f "/usr/local/rvm/scripts/rvm" ]]; then
-  source "/usr/local/rvm/scripts/rvm"
-elif [[ -f "${HOME}/.rvm/scripts/rvm" ]]; then
-  source "${HOME}/.rvm/scripts/rvm"
-fi
-
 # Our editor is vim, but use emacs keybindings in zsh
 export EDITOR=vim
 bindkey -e
@@ -24,7 +17,7 @@ bindkey -e
 export ZSH=$HOME/.oh-my-zsh
 
 case $(uname) in
-  (Darwin) 
+  (Darwin)
     plugins=(git github gem osx brew vagrant bundler rails3)
     export ZSH_THEME="wsc-mac"
     ;;

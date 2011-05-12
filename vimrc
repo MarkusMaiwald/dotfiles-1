@@ -41,6 +41,7 @@ set directory=~/.vim/swap,~/tmp,.
 au BufRead,BufNewFile /etc/nginx/* set ft=nginx
 au BufRead,BufNewFile *.json set ft=javascript foldmethod=syntax
 au BufRead,BufNewFile *.zsh-theme,zshrc set ft=zsh
+au BufRead,BufNewFile Vagrantfile set ft=ruby
 
 " Colors
 syntax enable

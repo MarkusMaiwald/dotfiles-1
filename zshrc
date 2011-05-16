@@ -1,5 +1,8 @@
 export PATH=~/bin:$PATH
 
+# Jesus Christ this is annoying
+export DISABLE_AUTO_UPDATE=true
+
 if [[ -f "${HOME}/.zprivate" ]]; then
   source "${HOME}/.zprivate"
 fi

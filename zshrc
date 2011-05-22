@@ -17,7 +17,7 @@ export EDITOR=vim
 bindkey -e
 
 # Oh my Zsh!
-export ZSH=$HOME/.oh-my-zsh
+export ZSH=$HOME/repo/oh-my-zsh
 
 case $(uname) in
   (Darwin)

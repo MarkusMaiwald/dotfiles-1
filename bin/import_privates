@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-private_path="${HOME}/repo/dotfiles-private"
+private_path="${HOME}/.dotfiles-private"
 
 if [[ -e ${private_path} ]]; then
   backup_path="${HOME}/.dotfiles-private.backup-$(date +%s)"

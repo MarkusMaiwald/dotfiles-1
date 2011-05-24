@@ -23,5 +23,5 @@ case $(uname) in
     ;;
 esac
 
-export ZSH=$HOME/repo/dotfiles/zsh
+export ZSH=$HOME/.zsh
 source $ZSH/init.sh

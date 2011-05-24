@@ -29,32 +29,17 @@ alias glg='git log --stat --max-count=5'
 compdef _git glg=git-log
 alias ga='git add'
 compdef _git ga='git-add'
+alias gf='git fetch'
+compdef _git gf='git-fetch'
 
-
-# Git and svn mix
-alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
-compdef git-svn-dcommit-push=git
-
-#
-# Will return the current branch name
-# Usage example: git pull origin $(current_branch)
-#
 function current_branch() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo ${ref#refs/heads/}
 }
 
-function git-track() {
+function git_track() {
   branch=$(current_branch)
   git config branch.$branch.remote origin
   git config branch.$branch.merge refs/heads/$branch
-  echo "tracking origin/$tracking"
+  echo "tracking origin/$branch"
 }
-
-# these aliases take advantage of the previous function
-alias ggpull='git pull origin $(current_branch)'
-compdef ggpull=git
-alias ggpush='git push origin $(current_branch)'
-compdef ggpush=git
-alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
-compdef ggpnp=git

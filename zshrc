@@ -1,8 +1,5 @@
 export PATH=~/bin:$PATH
 
-# Jesus Christ this is annoying
-export DISABLE_AUTO_UPDATE=true
-
 if [[ -f "${HOME}/.zprivate" ]]; then
   source "${HOME}/.zprivate"
 fi
@@ -12,12 +9,7 @@ if [[ -f "${HOME}/.gpg-agent-info" ]]; then
   export $(cat "${HOME}/.gpg-agent-info")
 fi
 
-# Our editor is vim, but use emacs keybindings in zsh
 export EDITOR=vim
-bindkey -e
-
-# Oh my Zsh!
-export ZSH=$HOME/repo/oh-my-zsh
 
 case $(uname) in
   (Darwin)
@@ -31,4 +23,5 @@ case $(uname) in
     ;;
 esac
 
-source $ZSH/oh-my-zsh.sh
+export ZSH=$HOME/repo/dotfiles/zsh
+source $ZSH/init.sh

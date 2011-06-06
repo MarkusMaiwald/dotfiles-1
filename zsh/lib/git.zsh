@@ -1,11 +1,23 @@
-# get the name of the branch we are on
-function git_prompt_info() {
+function current-branch() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  echo ${ref#refs/heads/}
+}
+
+function git-track() {
+  branch=$(current-branch)
+  git config branch.$branch.remote origin
+  git config branch.$branch.merge refs/heads/$branch
+  echo "tracking origin/$branch"
+}
+
+# get the name of the branch we are on
+function git-prompt-info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse-git-dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
 # Checks if working tree is dirty
-parse_git_dirty() {
+parse-git-dirty() {
   if [[ -n $(git status -s 2> /dev/null) ]]; then
     echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
   else
@@ -14,24 +26,42 @@ parse_git_dirty() {
 }
 
 # Checks if there are commits ahead from remote
-function git_prompt_ahead() {
-  if $(echo "$(git log origin/master..HEAD 2> /dev/null)" | grep '^commit' &> /dev/null); then
+function git-prompt-ahead() {
+  if $(echo "$(git log @{upstream}..HEAD 2> /dev/null)" | grep '^commit' &> /dev/null); then
     echo "$ZSH_THEME_GIT_PROMPT_AHEAD"
   fi
 }
 
+# Checks if we are behind remote
+function git-prompt-tracking() {
+  behind=$(git rev-list ^HEAD @{upstream} 2> /dev/null | wc -l)
+  ahead=$(git log @{upstream}..HEAD --format='%H' 2> /dev/null | wc -l)
+  if [[ $behind -gt 0 && $ahead -gt 0 ]]; then
+    echo "$ZSH_THEME_GIT_PROMPT_DIVERGED"
+  elif [[ $behind -gt 0 ]]; then
+    echo "$ZSH_THEME_GIT_PROMPT_BEHIND"
+  elif [[ $ahead -gt 0 ]]; then
+    echo "$ZSH_THEME_GIT_PROMPT_AHEAD"
+  fi
+}
+
+function git-can-ff() {
+  a="$(git rev-parse "$1")" &&
+  test "$(git merge-base "$a" "$2")" = "$a"
+}
+
 # Formats prompt string for current git commit short SHA
-function git_prompt_short_sha() {
+function git-prompt-short-sha() {
   SHA=$(git rev-parse --short HEAD 2> /dev/null) && echo "$ZSH_THEME_GIT_PROMPT_SHA_BEFORE$SHA$ZSH_THEME_GIT_PROMPT_SHA_AFTER"
 }
 
 # Formats prompt string for current git commit long SHA
-function git_prompt_long_sha() {
+function git-prompt-long-sha() {
   SHA=$(git rev-parse HEAD 2> /dev/null) && echo "$ZSH_THEME_GIT_PROMPT_SHA_BEFORE$SHA$ZSH_THEME_GIT_PROMPT_SHA_AFTER"
 }
 
 # Get the status of the working tree
-git_prompt_status() {
+git-prompt-status() {
   INDEX=$(git status --porcelain 2> /dev/null)
   STATUS=""
   if $(echo "$INDEX" | grep '^?? ' &> /dev/null); then
@@ -60,3 +90,5 @@ git_prompt_status() {
   fi
   echo $STATUS
 }
+
+

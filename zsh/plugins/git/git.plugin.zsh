@@ -32,14 +32,4 @@ compdef _git ga='git-add'
 alias gf='git fetch'
 compdef _git gf='git-fetch'
 
-function current_branch() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo ${ref#refs/heads/}
-}
 
-function git_track() {
-  branch=$(current_branch)
-  git config branch.$branch.remote origin
-  git config branch.$branch.merge refs/heads/$branch
-  echo "tracking origin/$branch"
-}

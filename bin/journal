@@ -11,12 +11,12 @@ File.open(JOURNAL_FILE, "r+") do |file|
   while line = file.gets
     if line =~ /^% ([A-Za-z0-9 ]+) /
       linedate = Date.parse($~[1])
-      today_found = Time.now.utc.to_date.next_day == linedate
+      today_found = Time.now.utc.to_date == linedate
     end
   end
 
   unless today_found
-    separator = "% " + Time.now.utc.to_date.next_day.strftime("%a %B %e %Y") + " "
+    separator = "% " + Time.now.utc.to_date.strftime("%a %B %e %Y") + " "
     separator += "-" * (80 - separator.length)
     file.puts "\n\n" + separator
   end

@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+require 'date'
+
+JOURNAL_DIR = File.expand_path("~/repo/journal")
+JOURNAL_FILE = JOURNAL_DIR + "/journal.txt"
+
+Dir.chdir(JOURNAL_DIR)
+system "git pull"
+
+File.open(JOURNAL_FILE, "r+") do |file|
+  while line = file.gets
+    if line =~ /^% ([A-Za-z0-9 ]+) /
+      linedate = Date.parse($~[1])
+      today_found = Time.now.utc.to_date.next_day == linedate
+    end
+  end
+
+  unless today_found
+    separator = "% " + Time.now.utc.to_date.next_day.strftime("%a %B %e %Y") + " "
+    separator += "-" * (80 - separator.length)
+    file.puts "\n\n" + separator
+  end
+  
+  file.print "(" + Time.now.utc.strftime("%H:%M %Z") + ") "
+end
+
+if system "vim #{JOURNAL_FILE} +\"normal G$\" -c start\!"
+  system "git commit -a -m \"#{Time.now.utc.to_s}\" && git push"
+else
+  puts "):"
+end

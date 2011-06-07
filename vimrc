@@ -21,6 +21,7 @@ set textwidth=80
 " UI
 set number
 set t_Co=256
+set ruler
 
 " Visual Cues
 set showmatch

@@ -10,16 +10,15 @@ if [[ -f "${HOME}/.gpg-agent-info" ]]; then
 fi
 
 export EDITOR=vim
+export ZSH_THEME="wsc"
 
 case $(uname) in
   (Darwin)
     export PATH=/usr/local/Cellar/ruby/1.9.2-p180/bin:/usr/local/bin:$PATH
     plugins=(git github gem osx brew vagrant bundler rails3)
-    export ZSH_THEME="wsc-mac"
     ;;
   (Linux)
     plugins=(git github gem command-not-found bundler rails3)
-    export ZSH_THEME="wsc-linux"
     ;;
 esac
 

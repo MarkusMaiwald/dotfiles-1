@@ -43,6 +43,13 @@ function git-prompt-tracking() {
   elif [[ $ahead -gt 0 ]]; then
     echo "$ZSH_THEME_GIT_PROMPT_AHEAD"
   fi
+
+  branch=$(current-branch)
+  remote=$(git config --get branch.$branch.remote)
+  merge=$(git config --get branch.$branch.merge)
+  if [[ -z $remote || -z $merge ]]; then
+    echo $ZSH_THEME_GIT_NO_TRACK
+  fi
 }
 
 function git-can-ff() {

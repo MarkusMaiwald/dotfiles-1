@@ -34,7 +34,7 @@ function prompt-git-dirty() {
 }
 
 function prompt-git-tracking() {
-  git rev-parse @{upstream} > /dev/null 2>&1 || (echo $ZSH_THEME_GIT_NO_TRACK && return)
+  git rev-parse @{upstream} > /dev/null 2>&1 || echo $ZSH_THEME_GIT_NO_TRACK && return
   behind=$(git-commits-behind)
   ahead=$(git-commits-ahead)
   if [[ $behind -gt 0 && $ahead -gt 0 ]]; then
@@ -60,5 +60,5 @@ ZSH_THEME_VAGRANT="❒ "
 ZSH_THEME_OS_DARWIN=" "
 ZSH_THEME_OS_LINUX="ℓ "
 
-PROMPT='%F{green}%2c%F{blue} $(prompt-os)[%f '
+PROMPT='%F{green}%2c%F{blue} [%f '
 RPROMPT='$(prompt-git) %F{blue}$(prompt-vagrant)] %F{green}%D{%L:%M} %F{yellow}%D{%p}%f'

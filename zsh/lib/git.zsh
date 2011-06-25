@@ -4,10 +4,17 @@ function git-current-branch() {
 }
 
 function git-track() {
+  remote=${1:-"origin"}
   branch=$(git-current-branch)
-  git config branch.$branch.remote origin
-  git config branch.$branch.merge refs/heads/$branch
-  echo "tracking origin/$branch"
+  git branch --set-upstream $branch $remote/$branch
+}
+
+function git-commits-behind() {
+  git rev-list --count --left-only @{upstream}...HEAD
+}
+
+function git-commits-ahead() {
+  git rev-list --count --right-only @{upstream}...HEAD
 }
 
 function git-can-ff() {

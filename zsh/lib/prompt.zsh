@@ -34,21 +34,15 @@ function prompt-git-dirty() {
 }
 
 function prompt-git-tracking() {
-  branch=$(git-current-branch)
-  remote=$(git config --get branch.$branch.remote)
-  merge=$(git config --get branch.$branch.merge)
-  if [[ -z $remote || -z $merge ]]; then
-    echo $ZSH_THEME_GIT_NO_TRACK
-  else
-    behind=$(git rev-list ^HEAD @{upstream} 2> /dev/null | wc -l)
-    ahead=$(git log @{upstream}..HEAD --format='%H' 2> /dev/null | wc -l)
-    if [[ $behind -gt 0 && $ahead -gt 0 ]]; then
-      echo "$ZSH_THEME_GIT_PROMPT_DIVERGED"
-    elif [[ $behind -gt 0 ]]; then
-      echo "$ZSH_THEME_GIT_PROMPT_BEHIND"
-    elif [[ $ahead -gt 0 ]]; then
-      echo "$ZSH_THEME_GIT_PROMPT_AHEAD"
-    fi
+  git rev-parse @{upstream} > /dev/null 2>&1 || (echo $ZSH_THEME_GIT_NO_TRACK && return)
+  behind=$(git-commits-behind)
+  ahead=$(git-commits-ahead)
+  if [[ $behind -gt 0 && $ahead -gt 0 ]]; then
+    echo "$ZSH_THEME_GIT_PROMPT_DIVERGED"
+  elif [[ $behind -gt 0 ]]; then
+    echo "$ZSH_THEME_GIT_PROMPT_BEHIND"
+  elif [[ $ahead -gt 0 ]]; then
+    echo "$ZSH_THEME_GIT_PROMPT_AHEAD"
   fi
 }
 

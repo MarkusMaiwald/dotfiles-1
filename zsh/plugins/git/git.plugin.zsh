@@ -31,5 +31,9 @@ alias ga='git add'
 compdef _git ga='git-add'
 alias gf='git fetch'
 compdef _git gf='git-fetch'
-
+alias gr='git remote -v'
+compdef _git gr='git-remote'
+alias gm='git merge'
+compdef _git gm='git-merge'
+alias gmu='git merge @{upstream}'
 

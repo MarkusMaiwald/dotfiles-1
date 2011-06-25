@@ -34,15 +34,18 @@ function prompt-git-dirty() {
 }
 
 function prompt-git-tracking() {
-  git rev-parse @{upstream} > /dev/null 2>&1 || echo $ZSH_THEME_GIT_NO_TRACK && return
-  behind=$(git-commits-behind)
-  ahead=$(git-commits-ahead)
-  if [[ $behind -gt 0 && $ahead -gt 0 ]]; then
-    echo "$ZSH_THEME_GIT_PROMPT_DIVERGED"
-  elif [[ $behind -gt 0 ]]; then
-    echo "$ZSH_THEME_GIT_PROMPT_BEHIND"
-  elif [[ $ahead -gt 0 ]]; then
-    echo "$ZSH_THEME_GIT_PROMPT_AHEAD"
+  if git rev-parse @{upstream} > /dev/null 2>&1; then
+    behind=$(git-commits-behind)
+    ahead=$(git-commits-ahead)
+    if [[ $behind -gt 0 && $ahead -gt 0 ]]; then
+      echo "$ZSH_THEME_GIT_PROMPT_DIVERGED"
+    elif [[ $behind -gt 0 ]]; then
+      echo "$ZSH_THEME_GIT_PROMPT_BEHIND"
+    elif [[ $ahead -gt 0 ]]; then
+      echo "$ZSH_THEME_GIT_PROMPT_AHEAD"
+    fi
+  else
+    echo $ZSH_THEME_GIT_NO_TRACK
   fi
 }
 

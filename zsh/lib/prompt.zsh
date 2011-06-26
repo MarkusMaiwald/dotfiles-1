@@ -63,5 +63,5 @@ ZSH_THEME_VAGRANT="❒ "
 ZSH_THEME_OS_DARWIN=" "
 ZSH_THEME_OS_LINUX="ℓ "
 
-PROMPT='%F{green}%2c%F{blue} [%f '
-RPROMPT='$(prompt-git) %F{blue}$(prompt-vagrant)] %F{green}%D{%L:%M} %F{yellow}%D{%p}%f'
+PROMPT='%F{blue}%2c%f '
+RPROMPT='%F{blue}$(prompt-vagrant)$(prompt-git)'

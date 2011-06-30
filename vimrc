@@ -68,7 +68,7 @@ set pastetoggle=<F2>
 " GUI
 set guicursor=a:blinkon0    " Stop the scourge of blinking cursors
 set guifont=Inconsolata:h14
-set guioptions=-t           " Hide the macvim toolbar (floppy disks?)
+set guioptions-=T           " Hide the macvim toolbar (floppy disks?)
 set guioptions-=L
 set guioptions-=r
 

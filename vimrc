@@ -56,14 +56,28 @@ imap <C-e> <C-o>$
 map <C-e> $
 map <C-a> 0
 " Tabs
-map <C-t><up> :tabr<cr>
-map <C-t><down> :tabl<cr>
-map <C-t><left> :tabp<cr>
-map <C-t><right> :tabn<cr>
+" map <C-t><up> :tabr<cr>
+" map <C-t><down> :tabl<cr>
+" map <C-t><left> :tabp<cr>
+" map <C-t><right> :tabn<cr>
+map <C-w> <C-w>w            " Ctrl-W toggles windows
+
 " Paste
 set pastetoggle=<F2>
 
 " GUI
 set guicursor=a:blinkon0    " Stop the scourge of blinking cursors
 set guifont=Inconsolata:h14
-"set guioptions=-t           " Hide the macvim toolbar (floppy disks?)
+set guioptions-=T           " Hide the macvim toolbar (floppy disks?)
+set guioptions-=L
+set guioptions-=r
+
+"ruby
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+
+"improve autocomplete menu color
+highlight Pmenu ctermbg=238 gui=bold
+

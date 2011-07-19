@@ -39,3 +39,14 @@ function markdown() {
   mv $tmpfile $tmpfile.html
   open $tmpfile.html
 }
+
+function pow() {
+  appname=$(basename $(pwd))
+
+  if [[ ! -L ~/.pow/$appname ]]; then
+    appdir=`pwd`
+    ln -s $appdir ~/.pow/$appname
+    echo "Pow configured: http://$appname.dev"
+  fi
+  open http://$appname.dev
+}

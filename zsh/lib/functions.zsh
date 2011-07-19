@@ -33,3 +33,9 @@ function extract() {
   fi
 }
 
+function markdown() {
+  tmpfile=$(mktemp /tmp/markdown.XXXXXX)
+  cat $1 | markdown.pl > $tmpfile
+  mv $tmpfile $tmpfile.html
+  open $tmpfile.html
+}

@@ -1,8 +1,8 @@
 " General
 filetype on         " If you don't do this, vim will exit nonzero
 filetype off
-call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 filetype plugin indent on
 set nocompatible
 set wm=2
@@ -81,3 +81,5 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 "improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
 
+" NERDTree
+let NERDTreeShowHidden=1

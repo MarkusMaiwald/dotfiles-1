@@ -1,0 +1,1 @@
+path=(~/.rbenv/shims ~/.rbenv/bin/ ~/bin ~/usr/local/bin $path)

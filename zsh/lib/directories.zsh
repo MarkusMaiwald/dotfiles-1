@@ -1,2 +1,0 @@
-setopt auto_name_dirs
-setopt pushd_ignore_dups

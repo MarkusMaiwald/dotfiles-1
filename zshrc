@@ -1,28 +1,37 @@
-export PATH=~/bin:$PATH
-
 if [[ -f "${HOME}/.zprivate" ]]; then
   source "${HOME}/.zprivate"
 fi
 
-# If GPG-Agent has started, load it
-if [[ -f "${HOME}/.gpg-agent-info" ]]; then
-  export $(cat "${HOME}/.gpg-agent-info")
+export EDITOR=vim
+
+if [[ -eq $(uname) "Darwin" ]]; then
+  export PATH=/usr/local/bin:$PATH
 fi
 
-export EDITOR=vim
-export ZSH_THEME="wsc"
+bindkey -e
 
-case $(uname) in
-  (Darwin)
-    export PATH=/usr/local/bin:$PATH
-    plugins=(git github gem osx brew vagrant bundler rails3)
-    ;;
-  (Linux)
-    plugins=(git github gem command-not-found bundler rails3)
-    ;;
-esac
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;32'
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+# ls colors
+autoload colors; colors;
+# BSD
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+# Linux
+export LS_COLORS="di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:"
 
-export ZSH=$HOME/.zsh
+# Enable ls colors
+# Find the option for using colors in ls, depending on the version: Linux or BSD
+ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
+
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;32'
+
+# Load and run compinit
+autoload -U compinit
+compinit -i
+
+
+export PATH=~/.rbenv/shims:~/.rbenv/bin:~/bin:$PATH
 source $ZSH/init.sh
+

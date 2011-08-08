@@ -1,19 +1,8 @@
 setopt prompt_subst
 
-function prompt-os() {
-  case $(uname) in
-    (Darwin)
-      echo $ZSH_THEME_OS_DARWIN;
-      ;;
-    (Linux)
-      echo $ZSH_THEME_OS_LINUX;
-      ;;
-  esac
-}
-
 function prompt-vagrant() {
   if [[ -f ".vagrant" ]]; then
-    echo $ZSH_THEME_VAGRANT;
+    echo $PROMPT_VAGRANT;
   fi
 }
 
@@ -24,12 +13,12 @@ function prompt-git() {
 }
 
 function prompt-git-branch() {
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(git-current-branch)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+  echo "$PROMPT_GIT_PROMPT_PREFIX$(git-current-branch)$PROMPT_GIT_PROMPT_SUFFIX"
 }
 
 function prompt-git-dirty() {
   if [[ -n $(git status -s 2> /dev/null) ]]; then
-    echo "$ZSH_THEME_GIT_PROMPT_DIRTY"
+    echo "$PROMPT_GIT_PROMPT_DIRTY"
   fi
 }
 
@@ -38,30 +27,26 @@ function prompt-git-tracking() {
     behind=$(git-commits-behind)
     ahead=$(git-commits-ahead)
     if [[ $behind -gt 0 && $ahead -gt 0 ]]; then
-      echo "$ZSH_THEME_GIT_PROMPT_DIVERGED"
+      echo "$PROMPT_GIT_PROMPT_DIVERGED"
     elif [[ $behind -gt 0 ]]; then
-      echo "$ZSH_THEME_GIT_PROMPT_BEHIND"
+      echo "$PROMPT_GIT_PROMPT_BEHIND"
     elif [[ $ahead -gt 0 ]]; then
-      echo "$ZSH_THEME_GIT_PROMPT_AHEAD"
+      echo "$PROMPT_GIT_PROMPT_AHEAD"
     fi
   else
-    echo $ZSH_THEME_GIT_NO_TRACK
+    echo $PROMPT_GIT_NO_TRACK
   fi
 }
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%F{yellow}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%f"
-ZSH_THEME_GIT_PROMPT_DIRTY=" %F{red}✶%f"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
-ZSH_THEME_GIT_PROMPT_AHEAD=" %F{green}→%f"
-ZSH_THEME_GIT_PROMPT_BEHIND=" %F{red}←%f"
-ZSH_THEME_GIT_PROMPT_DIVERGED=" %F{yellow}⇆%f"
-ZSH_THEME_GIT_NO_TRACK=" %F{red}⚡%f"
-
-ZSH_THEME_VAGRANT="❒ "
-
-ZSH_THEME_OS_DARWIN=" "
-ZSH_THEME_OS_LINUX="ℓ "
+PROMPT_GIT_PROMPT_PREFIX="%F{yellow}"
+PROMPT_GIT_PROMPT_SUFFIX="%f"
+PROMPT_GIT_PROMPT_DIRTY=" %F{red}✶%f"
+PROMPT_GIT_PROMPT_CLEAN=""
+PROMPT_GIT_PROMPT_AHEAD=" %F{green}→%f"
+PROMPT_GIT_PROMPT_BEHIND=" %F{red}←%f"
+PROMPT_GIT_PROMPT_DIVERGED=" %F{yellow}⇆%f"
+PROMPT_GIT_NO_TRACK=" %F{red}⚡%f"
+PROMPT_VAGRANT="❒ "
 
 PROMPT='%F{blue}%2c%f '
 RPROMPT='%F{blue}$(prompt-vagrant)$(prompt-git)'

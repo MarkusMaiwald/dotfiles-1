@@ -1,0 +1,34 @@
+alias be="bundle exec"
+alias bi="bundle install"
+alias bu="bundle update"
+
+function _bundle_command {
+  if command -v bundle && [ -e "Gemfile" ]; then
+    bundle exec $@
+  else
+    $@
+  fi
+}
+
+function _rails_command () {
+  if [ -e "script/server" ]; then
+    ruby script/$@
+  else
+    ruby script/rails $@
+  fi
+}
+
+
+alias rc='_rails_command console'
+alias rd='_rails_command destroy'
+alias rdb='_rails_command dbconsole'
+alias rdbm='rake db:migrate db:test:clone'
+alias rg='_rails_command generate'
+alias rp='_rails_command plugin'
+alias rs='_rails_command server'
+alias rsd='_rails_command server --debugger'
+alias v='bundle exec vagrant'
+alias vs='bundle exec vagrant ssh'
+alias vu='bundle exec vagrant up'
+alias vd='bundle exec vagrant destroy'
+alias vp='bundle exec vagrant provision'

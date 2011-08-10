@@ -41,7 +41,7 @@ set directory=~/.vim/swap,~/tmp,.
 " Filetypes
 au BufRead,BufNewFile /etc/nginx/* set ft=nginx
 au BufRead,BufNewFile *.json set ft=javascript foldmethod=syntax
-au BufRead,BufNewFile *.zsh-theme,zshrc set ft=zsh
+au BufRead,BufNewFile */zsh/*,zshrc set ft=zsh
 au BufRead,BufNewFile Vagrantfile,Gemfile set ft=ruby
 
 " Colors

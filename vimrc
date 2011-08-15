@@ -15,8 +15,9 @@ set shiftwidth=2
 set autoindent
 set smartindent
 set wrap
-set nosmarttab
-set textwidth=80
+set textwidth=100
+
+autocmd FileType python set tabstop=4 | set shiftwidth=4
 
 " UI
 set number

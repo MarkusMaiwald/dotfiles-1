@@ -18,6 +18,21 @@ function _rails_command () {
   fi
 }
 
+function rdox () {
+	if curl -s localhost:8808 > /dev/null; then
+		echo "Server already running at http://0.0.0.0:8808"
+	else
+		/Users/wsc/.rbenv/versions/1.8.7-p352/bin/yard server -g -p 8808 -d
+		echo "1.8.7 yard server started at http://0.0.0.0:8808"
+	fi
+
+	if curl -s localhost:8809 > /dev/null; then
+		echo "Server already running at http://0.0.0.0:8809"
+	else
+		/Users/wsc/.rbenv/versions/1.9.2-p290/bin/yard server -g -p 8809 -d
+		echo "1.9.2 yard server started at http://0.0.0.0:8809"
+	fi
+}
 
 alias rc='_rails_command console'
 alias rd='_rails_command destroy'

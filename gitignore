@@ -5,3 +5,4 @@ tmp
 .powrc
 .rbenv-version
 .yardoc
+.rvmrc

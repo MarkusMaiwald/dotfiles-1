@@ -15,7 +15,6 @@ set shiftwidth=2
 set autoindent
 set smartindent
 set wrap
-set textwidth=100
 
 autocmd FileType python set tabstop=4 | set shiftwidth=4
 
@@ -84,3 +83,6 @@ highlight Pmenu ctermbg=238 gui=bold
 
 " NERDTree
 let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.pyc$', '\.DS_Store$']
+
+set autoread " Suppress obnoxious warning

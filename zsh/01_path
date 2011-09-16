@@ -1,1 +1,1 @@
-path=(~/.rbenv/shims ~/.rbenv/bin/ ~/bin /usr/local/bin /usr/local/share/python $path)
+path=($HOME/.rbenv/bin $HOME/bin /usr/local/bin /usr/local/share/python $path)

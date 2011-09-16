@@ -84,5 +84,6 @@ highlight Pmenu ctermbg=238 gui=bold
 " NERDTree
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc$', '\.DS_Store$']
+nmap <silent> <C-n> :NERDTreeToggle<CR>
 
 set autoread " Suppress obnoxious warning

@@ -25,4 +25,4 @@ for f in $HOME/.zsh/??_*; do
   source $f
 done
 
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"

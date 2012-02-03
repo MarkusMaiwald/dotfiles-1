@@ -1,0 +1,6 @@
+(add-to-list 'load-path "~/.emacs.d/lisp/")
+(setq inhibit-startup-message t)
+(set-face-attribute 'default nil :font "Inconsolata-13")
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-solarized-dark)

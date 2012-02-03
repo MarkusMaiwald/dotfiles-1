@@ -12,3 +12,4 @@ alias heroku='nocorrect heroku'
 alias ebuild='nocorrect ebuild'
 alias hpodder='nocorrect hpodder'
 
+alias emacs='/usr/local/Cellar/emacs/HEAD/Emacs.app/Contents/MacOS/Emacs'

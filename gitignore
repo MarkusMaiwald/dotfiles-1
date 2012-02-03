@@ -3,6 +3,10 @@ log
 tmp
 .DS_Store
 .powrc
-.rbenv-version
 .yardoc
 .rvmrc
+narwhup
+*.pyc
+*~
+\#*#
+*\#*

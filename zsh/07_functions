@@ -19,3 +19,31 @@ function manp() {
   man -t $* | ps2pdf - - | open -f -a Preview
 }
 
+function fuckpython() {
+  find . -type f -name "*.pyc" -exec rm {} \;
+}
+
+function ezgrep() {
+  # IT'S GONNA BE THAT E-Z
+  find . -type f -not -ipath '*.log' -not -ipath '*git*' -print0 | xargs -0 grep -il "${1}"
+}
+
+function findtabs() {
+  grep -ril -P "\t" $1
+}
+
+function wip () {
+	git commit -a -m 'WIP'
+}
+
+function vmstart() {
+  vmrun -T fusion start ~/Documents/Virtual\ Machines.localized/Ubuntu\ 64-bit.vmwarevm/Ubuntu\ 64-bit.vmx nogui
+}
+
+function vmssh() {
+  ssh wsc@172.16.2.128
+}
+
+function vmstop() {
+  vmrun -T fusion stop ~/Documents/Virtual\ Machines.localized/Ubuntu\ 64-bit.vmwarevm/Ubuntu\ 64-bit.vmx nogui
+}

@@ -60,14 +60,14 @@ map <C-a> 0
 " map <C-t><down> :tabl<cr>
 " map <C-t><left> :tabp<cr>
 " map <C-t><right> :tabn<cr>
-map <C-w> <C-w>w            " Ctrl-W toggles windows
+" map <C-w> <C-w>w            " Ctrl-W toggles windows
 
 " Paste
 set pastetoggle=<F2>
 
 " GUI
 set guicursor=a:blinkon0    " Stop the scourge of blinking cursors
-set guifont=Inconsolata:h14
+set guifont=Inconsolata:h13
 set guioptions-=T           " Hide the macvim toolbar (floppy disks?)
 set guioptions-=L
 set guioptions-=r
@@ -87,3 +87,4 @@ let NERDTreeIgnore=['\.pyc$', '\.DS_Store$']
 nmap <silent> <C-n> :NERDTreeToggle<CR>
 
 set autoread " Suppress obnoxious warning
+set autochdir

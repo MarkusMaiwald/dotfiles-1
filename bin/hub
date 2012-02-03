@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby-local-exec
 #
 # This file, hub, is generated code.
 # Please DO NOT EDIT or send patches for it.

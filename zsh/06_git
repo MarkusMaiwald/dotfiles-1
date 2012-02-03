@@ -24,10 +24,10 @@ function git-can-ff() {
   test "$(git merge-base "$a" "$2")" = "$a"
 }
 
-if [ "$commands[(I)hub]" ]; then
-    # eval `hub alias -s zsh`
-    function git(){hub "$@"}
-fi
+# if [ "$commands[(I)hub]" ]; then
+#     # eval `hub alias -s zsh`
+#     function git(){hub "$@"}
+# fi
 
 alias g='git'
 compdef g=git

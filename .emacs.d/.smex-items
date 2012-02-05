@@ -1,0 +1,50 @@
+
+;; ----- smex-history -----
+(
+ magit-status
+ kill-some-buffers
+ revert-buffer
+ replace-string
+ sql-mode
+ ps-print-buffer-with-faces
+ package-install
+)
+
+;; ----- smex-data -----
+(
+ (magit-status . 194)
+ (column-number-mode . 2)
+ (linum-mode . 1)
+ (eval-buffer . 4)
+ (ruby-mode . 2)
+ (python-mode . 4)
+ (replace-string . 37)
+ (magit-diff . 3)
+ (goto-line . 5)
+ (sql-mode . 6)
+ (kill-some-buffers . 19)
+ (wdired-change-to-wdired-mode . 7)
+ (print-buffer . 1)
+ (magit-log-long . 1)
+ (revert-buffer . 60)
+ (make-directory . 1)
+ (dired . 6)
+ (eval-region . 1)
+ (package-install . 8)
+ (package-list-packages . 7)
+ (package-menu-describe-package . 1)
+ (list-packages . 4)
+ (ps-print-buffer-with-faces . 15)
+ (browse-url-of-file . 1)
+ (rhtml-fontify-buffer . 1)
+ (decrease-left-margin . 1)
+ (python-indent-line . 1)
+ (python-shift-left . 3)
+ (text-mode . 1)
+ (shell . 1)
+ (term . 1)
+ (font-lock-fontify-buffer . 1)
+ (indent-region . 1)
+ (python-shift-right . 6)
+ (python-fill-paragraph . 2)
+)
